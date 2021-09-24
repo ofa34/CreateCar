@@ -17,6 +17,7 @@ public class CreateCar extends TestBase {
     @Test
     public void carCreation(){
 
+
         LoginPage loginPage=new LoginPage();
         String username = ConfigurationReader.get("storemanager_username");
         String password = ConfigurationReader.get("storemanager_password");
