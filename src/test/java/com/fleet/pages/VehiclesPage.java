@@ -116,10 +116,10 @@ public class VehiclesPage extends BasePage {
     public WebElement immatriculationDate_inputbox;
 
     @FindBy(className = "select2-chosen")
-    public List<WebElement> transmission;
+    public WebElement transmission;
 
     @FindBy(xpath = "(//*[@class='select2-chosen'])[2]")
-    public List<WebElement> fuelType;
+    public WebElement fuelType;
 
     @FindBy(xpath = "(//input[@placeholder='Choose a date'])[2]")
     public WebElement firstContractDate_inputbox;

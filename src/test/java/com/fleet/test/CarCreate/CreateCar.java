@@ -84,6 +84,8 @@ public class CreateCar extends TestBase {
 
 
             driver.close();
+
         }
+
     }
 }
