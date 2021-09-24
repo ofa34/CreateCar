@@ -227,6 +227,9 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "(//div[@class='control-label'])[2]")
     public WebElement tagsOutput;
 
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div[1]/div[2]/div[3]/form/div[2]/div[2]/div/div[1]/div[2]/div/fieldset/div/div[2]/div[2]/div/div/label")
+    public List<WebElement> myTags;
+
 //JS---------------------------
 
     //ME---------------------------
