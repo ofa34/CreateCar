@@ -46,7 +46,7 @@ public class CreateRandomCar extends TestBase {
             vehiclesPage.waitUntilLoaderScreenDisappear();
 
 
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             String [] month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
             String date1 = month[random.nextInt(11)+1] +" "+ (random.nextInt(30)+1)  + ", "+ (random.nextInt(40)+1980);
             String date2 = month[random.nextInt(11)+1] +" "+ (random.nextInt(30)+1)  + ", "+ (random.nextInt(40)+1980);
@@ -68,6 +68,7 @@ public class CreateRandomCar extends TestBase {
 
 
             vehiclesPage.waitUntilLoaderScreenDisappear();
+            driver.navigate().refresh();
             vehiclesPage.licence_plate_inputbox.sendKeys(licensePlate);
             vehiclesPage.myTags.get(random.nextInt(7)).click();
 
