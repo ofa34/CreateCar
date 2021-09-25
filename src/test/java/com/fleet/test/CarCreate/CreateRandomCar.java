@@ -6,17 +6,12 @@ import com.fleet.pages.VehiclesPage;
 import com.fleet.test.TestBase;
 import com.fleet.utilities.BrowserUtils;
 import com.fleet.utilities.ConfigurationReader;
-import com.fleet.utilities.Driver;
-import com.fleet.utilities.ExcelUtil;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
-
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CreateRandomCar extends TestBase {
@@ -33,11 +28,10 @@ public class CreateRandomCar extends TestBase {
 
         Faker faker = new Faker();
         Random random= new Random();
-        DecimalFormat dc= new DecimalFormat("0.0");
         VehiclesPage vehiclesPage = new VehiclesPage();
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
 
             new DashboardPage().navigateToModule("Fleet", "Vehicles");
 
@@ -48,8 +42,8 @@ public class CreateRandomCar extends TestBase {
 
             Thread.sleep(4000);
             String [] month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-            String date1 = month[random.nextInt(11)+1] +" "+ (random.nextInt(30)+1)  + ", "+ (random.nextInt(40)+1980);
-            String date2 = month[random.nextInt(11)+1] +" "+ (random.nextInt(30)+1)  + ", "+ (random.nextInt(40)+1980);
+            String date1 = month[random.nextInt(11)+1] +" "+ (random.nextInt(29)+1)  + ", "+ (random.nextInt(40)+1980);
+            String date2 = month[random.nextInt(11)+1] +" "+ (random.nextInt(29)+1)  + ", "+ (random.nextInt(40)+1980);
             String licensePlate= faker.bothify("##????").toUpperCase();
             String Driver = faker.name().fullName();
             String location = faker.address().city().toUpperCase();
@@ -71,7 +65,6 @@ public class CreateRandomCar extends TestBase {
             driver.navigate().refresh();
             vehiclesPage.licence_plate_inputbox.sendKeys(licensePlate);
             vehiclesPage.myTags.get(random.nextInt(7)).click();
-
             vehiclesPage.driver_inputbox.sendKeys(Driver);
             vehiclesPage.location_inputbox.sendKeys(location);
             vehiclesPage.chassis_inputbox.sendKeys(chassisNumber);
@@ -86,14 +79,11 @@ public class CreateRandomCar extends TestBase {
             vehiclesPage.seatNumber_inputbox.sendKeys(seatsNumber+"");
             vehiclesPage.doorsNumber_inputbox.sendKeys(doorsNumber+"");
             vehiclesPage.color_inputbox.sendKeys(color);
-
             vehiclesPage.transmission.click();
             driver.findElements(By.xpath("/html/body/div[8]/ul[2]/li")).get(random.nextInt(2)).click();
             Thread.sleep(1000);
             vehiclesPage.fuelType.click();
             driver.findElements(By.xpath("/html/body/div[9]/ul[2]/li")).get(random.nextInt(4)).click();
-
-
             vehiclesPage.emissions_inputbox.sendKeys(emissions+"");
             vehiclesPage.horsePower_inputbox.sendKeys(horsePower+"");
             vehiclesPage.horsePowerTaxation_inputbox.sendKeys(horsePowerTaxation+"");
